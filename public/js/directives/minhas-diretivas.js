@@ -35,3 +35,11 @@ angular
       >{{nome}}</button>
     `
   }))
+  .directive('meuFocus', () => ({
+    restrict: 'A',
+    link: (scope, element) => {
+      scope.$on('fotoCadastrada', () => {
+        element[0].focus()
+      })
+    }
+  }))

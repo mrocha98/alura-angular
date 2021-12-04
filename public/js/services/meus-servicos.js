@@ -7,7 +7,9 @@ angular
       }
     })
   })
-  .factory('cadastroDeFotos', function (recursoFoto, $q) {
+  .factory('cadastroDeFotos', function (recursoFoto, $q, $rootScope) {
+    const evento = 'fotoCadastrada'
+
     return {
       cadastrar: foto =>
         $q((resolve, reject) => {
@@ -15,11 +17,13 @@ angular
             recursoFoto.update(
               { fotoId: foto._id },
               foto,
-              () =>
+              () => {
+                $rootScope.$broadcast(evento)
                 resolve({
                   mensagem: `Foto ${foto.titulo} atualizada com sucesso!`,
                   inclusao: false
-                }),
+                })
+              },
               erro =>
                 reject({
                   mensagem: `Não foi possível alterar a foto ${foto.titulo}`,
@@ -29,17 +33,18 @@ angular
           } else {
             recursoFoto.save(
               foto,
-              () => (
+              () => {
+                $rootScope.$broadcast(evento)
                 resolve({
                   mensagem: `Foto ${foto.titulo} foi incluída com sucesso!`,
                   inclusao: true
-                }),
-                erro =>
-                  reject({
-                    mensagem: `Não foi possível incluir a foto ${foto.titulo}`,
-                    erro
-                  })
-              )
+                })
+              },
+              erro =>
+                reject({
+                  mensagem: `Não foi possível incluir a foto ${foto.titulo}`,
+                  erro
+                })
             )
           }
         })
