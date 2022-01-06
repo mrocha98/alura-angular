@@ -1,6 +1,7 @@
 {
   "name": "byte-bank",
   "version": "0.0.0",
+  "license": "BSD-3-Clause-Clear",
   "scripts": {
     "ng": "ng",
     "start:server": "json-server --watch dados/db.json",
@@ -10,7 +11,6 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
-  "private": true,
   "dependencies": {
     "@angular/animations": "~13.1.0",
     "@angular/common": "~13.1.0",

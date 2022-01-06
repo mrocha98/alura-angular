@@ -9,7 +9,7 @@
     "format": "prettier-standard --format '**/*.{html,css,js}'"
   },
   "author": "",
-  "license": "ISC",
+  "license": "BSD-3-Clause-Clear",
   "dependencies": {
     "body-parser": "^1.12.3",
     "cors": "^2.8.5",
