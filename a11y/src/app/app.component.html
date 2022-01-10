@@ -1,0 +1,16 @@
+<main>
+  <h1>Form</h1>
+  <app-yes-no-button-group
+    [(ngModel)]="test"
+    label="Are you good enough in Angular?"
+  ></app-yes-no-button-group>
+  <span>test: {{ test }}</span>
+
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <app-yes-no-button-group
+      formControlName="yesNoAnswer"
+      label="Are you good enough in Angular?"
+    ></app-yes-no-button-group>
+    <button type="submit">Submit</button>
+  </form>
+</main>
